@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=3e5ef0ca-a4ce-4f8c-96d9-63000d424ba3&lang=ru_RU"
+        type="text/javascript">
+        </script>
+    <meta charset="UTF-8">
+    <title>yandex</title>
+    <script defer src="./js.js"></script>
+    <link href="./css.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="form">
+        <div class="header">
+            <div id="addres"></div><button id="close-button">X</button><br>
+        </div>
+        <div>
+            <div id="comment"></div><br>
+        </div>
+        <div>
+            <div>ВАШ ОТЗЫВ</div>
+            <input type="text" id="add-name-input" placeholder="имя"><br>
+            <input type="text" id="add-location-input" placeholder="Место"><br>
+            <textarea id="add-comment-input" cols="20" rows="3" placeholder="Комментарий"></textarea><br>
+            <button id="add-button">сохранить</button>
+        </div>
+    </div>
+
+
+    <div id="map" class="map"></div>
+
+
+
+</body>
+
+</html>
