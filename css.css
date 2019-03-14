@@ -29,7 +29,6 @@ html,
         }
 
         #form {
-            display: none;
             position: absolute;
             width: 280px;
             height: 430px;
@@ -44,7 +43,7 @@ html,
             width: 365px;
             padding-left: 8px;
             padding-top: 8px;
-            
+
         }
         #close-button{
             position: absolute;
@@ -52,10 +51,10 @@ html,
             width: 15px;
             height: 15px;
             float: right;
-            
+
         }
         #comment{
             padding: 5px;
             width: 370px;
             height: 210px;
-        }
+        }  
