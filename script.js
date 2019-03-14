@@ -1,11 +1,12 @@
-import saveButton from './saveButton.js'; // сохранение данных из формы
-import getMyForm from './getMyForm.js'; // вызов формы
-import form from './form.js'; // данные формы
-
+import Form from './form.js'; // работа с формой
+import saveButton from './saveButton.js';
+var form = new Form;
+export {form};
 
 ymaps.ready(initMap);
 
 function initMap() {
+
 
     form.buttonCloseForm.addEventListener('click', () => { document.querySelector('#form').style.display = "none"; });
     var cordination;
@@ -25,7 +26,7 @@ function initMap() {
     //Слушаем эвенты и фильруем если эвент был по ссылке
     document.addEventListener('click', function (e) {
         if (e.target.closest("a")) {
-            getMyForm(e.target.innerHTML, [e.pageX, e.pageY])
+            form.getMyForm(e.target.innerHTML, [e.pageX, e.pageY])
             myMap.balloon.close();
         }
     })
@@ -44,15 +45,18 @@ function initMap() {
     myMap.geoObjects.add(myClaster);
 
     //Слушаем клик по кнопке Сохранить
-    form.formSaveButton.addEventListener('click', saveButton(cordination, myClaster, form));
+    form.formSaveButton.addEventListener('click', () => {
+        let myNewPlacemark = saveButton(cordination);
+        myClaster.add(myNewPlacemark);
+    });
 
 
     //Слушаем Клик по карте
     myMap.events.add('click', function (event) {
-
         cordination = event.get('coords');
         var pxEnter = event.get('pagePixels');
-        getMyForm(cordination, pxEnter);
+        form.getMyForm(cordination, pxEnter);
+        form.getAllComments;
 
     });
 

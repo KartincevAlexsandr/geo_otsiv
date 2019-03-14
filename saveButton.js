@@ -1,7 +1,6 @@
-import getAllComments from './getAllComments.js';
-import getMyForm from './getMyForm.js';
+import {form} from './script.js';
 
-export default function (cordination, myClaster, form) {
+export default function (cordination) {
     let nowTime = new Date();
     let strTime = `${nowTime.getFullYear()}.${nowTime.getMonth()}.${nowTime.getDay()} ${nowTime.getHours()}:${nowTime.getMinutes()}:${nowTime.getSeconds()}`
     if (form.allPointComment.hasOwnProperty(form.loc)) {
@@ -21,19 +20,17 @@ export default function (cordination, myClaster, form) {
             comment: form.formAddComment.value
         }]
     }
-    getAllComments(form.loc, form);
+    form.getAllComments;
     let myPlacemark = new ymaps.Placemark(cordination, {
         balloonContentHeader: form.formAddLocation.value,
         balloonContentBody: form.formAddComment.value,
         balloonContentFooter: form.strTime,
         id: form.loc
+    },{
+        openBalloonOnClick: false
     });
     myPlacemark.events.add('click', (event) => {
-        console.log(event);
-        getMyForm(cordination, event.get('pagePixels'));
+        form.getMyForm(cordination, event.get('pagePixels'));
     });
-    myClaster.add(myPlacemark);
-    form.formAddName.value = '';
-    form.formAddLocation.value = '';
-    form.formAddComment.value = '';
+    return myPlacemark;
 }
