@@ -29,6 +29,7 @@ html,
         }
 
         #form {
+            display: none;
             position: absolute;
             width: 280px;
             height: 430px;
